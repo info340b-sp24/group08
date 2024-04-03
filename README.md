@@ -3,3 +3,4 @@ This repository contains code for an interactive information web app, created fo
 Hanrui Tang
 Zerui Guan
 Dongzhi Hou
+Xinyi Zhou
