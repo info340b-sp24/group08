@@ -1,0 +1,44 @@
+header {
+    background-color: #1db954;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+main {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+section {
+    margin-bottom: 20px;
+}
+h2 {
+    color: #1db954;
+    margin-bottom: 10px;
+}
+p {
+    color: #333;
+    line-height: 1.5;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #0056b3;
+}
+
+footer {
+    background-color: #1db954;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #fff;
+}
