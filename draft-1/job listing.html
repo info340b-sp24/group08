@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Cards</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .job-box {
+            font-size: 16px;
+            border: 1px solid #ccc;
+            padding: 30px;
+            margin: 10px;
+        }
+        .job-box h2,
+        .job-box h3 {
+            font-size: 16px;
+        }
+    </style>
 </head>
-
 
 <body>
     <header>
@@ -48,70 +59,48 @@
             <button type="submit" aria-label="Apply Filter"><i class="fas fa-filter"></i> Apply Filter</button>
         </form>
     </section>
-</body>
 
-
-    <main>
-        <div>
-            <!-- Box 1 -->
-            <h2>Jr. Software Development Engineer</h2>
-            <h3>Company:</h3>
-            <h4>Amazon</h4>
-            <h3>Location:</h3>
-            <h4>Seattle, WA</h4>
-            <h3>Role Highlights: </h3>
-            <ul>
-                <li>Part-time work during the school year (16 hours/week)</li>
-                <li>Full-time work during the summer (40 hours/week)</li>
-                <li>Effective performance management and integrated opportunities for growth</li>
-            </ul>
-        </div>
-
-        <div>
-            <!-- Box 2 -->
-            <h2>Data Analytics Intern</h2>
-            <h3>Company:</h3>
-            <h4>DHL Express</h4>
-            <h3>Location:</h3>
-            <h4>Dallas, TX</h4>
-            <h3>Role Highlights: </h3>
-            <ul>
-                <li>Strong communication skills (written and verbal)</li>
-                <li>Strong attention to detail and organizational skills</li>
-                <li>Knowledge of business intelligence tools such as Power BI, Tableau</li>
-            </ul>
-        </div>
-
-        <div>
-            <!-- Box 3 -->
-            <h2>Tax Data Analyst</h2>
-            <h3>Company:</h3>
-            <h4>Salesforce</h4>
-            <h3>Location:</h3>
-            <h4>Seattle, WA</h4>
-            <h3>Role Highlights: </h3>
-            <ul>
-                <li>Experience telling stories with data and familiarity with Tableau visualization tool</li>
-                <li>Experience applying your analytics skills to projects which have had impact on business strategy</li>
-                <li>Interest in unlocking new opportunities for growth by discovering insights, automating processes</li>
-            </ul>
-        </div>
-
-        <div>
-            <!-- Box 4 -->
-            <h2>Data Analyst, Supply Chain</h2>
-            <h3>Company:</h3>
-            <h4>Tesla</h4>
-            <h3>Location:</h3>
-            <h4>Fremont, CA</h4>
-            <h3>Role Highlights: </h3>
-            <ul>
-                <li>Create and/or enhance action-driven dashboards (e.g., using Tableau)</li>
-                <li>Perform ongoing checks of internal dashboards to ensure they are up to date.</li>
-                <li>Support ad hoc data, SQL query, analysis, and debugging requests from cross-functional stakeholders.</li>
-            </ul>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="job-box">
+                    <!-- Box 1 -->
+                    <h2>Software Development Engineer</h2>
+                    <h3>Company: Amazon</h3>
+                    <h3>Location: Seattle</h3>
+                    <h3>Job Type: Internship</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-box">
+                    <!-- Box 2 -->
+                    <h2>Data Analytics Intern</h2>
+                    <h3>Company: DHL Express</h3>
+                    <h3>Location: Dallas</h3>
+                    <h3>Job Type: Internship</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-box">
+                    <!-- Box 3 -->
+                    <h2>Tax Data Analyst</h2>
+                    <h3>Company: Salesforce</h3>
+                    <h3>Location: Fremont</h3>
+                    <h3>Job Type: Internship</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="job-box">
+                    <!-- Box 4 -->
+                    <h2>Data Analyst, Supply Chain</h2>
+                    <h3>Company: Telsa</h3>
+                    <h3>Location: New York</h3>
+                    <h3>Job Type: Internship</h3>
+                </div>
+            </div>
         </div>
     </main>
+</body>
     <footer>
         <p>Designed by Allison Tang, Rock Guan, Anna Zhou, Eloise Hou.</p>
         <p>&copy; Interntional Student Searching Platform. All rights reserved.</p>
