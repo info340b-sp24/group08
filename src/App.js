@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
 import Listings from './Listings';
@@ -9,15 +10,19 @@ import HomePage from './Home';
 
 const root = createRoot(document.getElementById('root'));
 
-function App(props) {
+const App = () => {
   return (
     <React.StrictMode>
       <Header />
-      <HomePage />
-      <Listings />
-      <Visa />
-      <Discussion />
-      <Footer />
+      <div className='container-fluid d-flex flex-column'>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/listings" element={<Listings />} />
+          <Route path="/visa" element={<Visa />} />
+          <Route path="/discussion" element={<Discussion />} />
+        </Routes>
+        <Footer />
+      </div>
     </React.StrictMode>
   );
 };
