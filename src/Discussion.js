@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-
+import iconImg from './img/icon.jpg';
+import huskyImg from './img/Husky.jpg';
+import snowImg from './img/snow.jpg';
 function DiscussionPage(props) {
   const [newCommentText, setNewCommentText] = useState("");
 
@@ -8,19 +10,19 @@ function DiscussionPage(props) {
       id: "Hello",
       username: "Hello",
       commentText: "This is the first comment.",
-      imageUrl: "./public/icon.jpg"
+      imageUrl: iconImg
     },
     {
       id: "Dawg",
       username: "Dawg",
       commentText: "This is the second comment.",
-      imageUrl: "./public/Husky.jpg"
+      imageUrl: huskyImg
     },
     {
       id: "Snow",
       username: "Snow",
       commentText: "This is the third comment.",
-      imageUrl: "./public/snow.jpg"
+      imageUrl: snowImg
     }
   ];
 
@@ -57,10 +59,12 @@ function DiscussionPage(props) {
 
         {/* Render discussion comments */}
         <div id="discussion">
-          {discussionComments.map((comment, index) => (
+          {discussionComments.map((comment, index) =>
+            {
+            return (
             <div key={index} className="comment">
               <div className="me-2">
-                <img src={require(comment.imageUrl)} alt="User Icon" />
+                <img src={comment.imageUrl} alt="User Icon" />
               </div>
               <div className="commentContent">
                 <p className="username">{comment.username}</p>
@@ -89,7 +93,10 @@ function DiscussionPage(props) {
                 </div>
               </div>
             </div>
-          ))}
+          );}
+
+
+          )}
         </div>
       </div>
     </main>

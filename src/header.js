@@ -1,20 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const Header = () => {
-  return (
-    <header>
-      <h1>InterStu Spot</h1>
+export class Header extends React.Component {
+  render() {
+    return (<header>
+        <h1>InterStu Spot</h1>
         <nav aria-label="Main navigation">
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/listings">Job Listings</Link></li>
-                <li><Link to="/discussion">Discussion Board</Link></li>
-                <li><Link to="/visa">Visa Information</Link></li>
-            </ul>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/listings">Job Listings</a></li>
+            <li><a href="/discussion">Discussion Board</a></li>
+            <li><a href="/visa">Visa Information</a></li>
+          </ul>
         </nav>
-    </header>
-  );
+      </header>);
+  }
 }
-
-export default Header;
