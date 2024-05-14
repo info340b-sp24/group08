@@ -42,7 +42,7 @@ const Visa = () => {
 
         <div className="subsection-block">
           <h3 id="j1-visa" onClick={() => toggleVisaDetails('j1-visa-detail')}>
-            F1 Visa
+            J1 Visa
           </h3>
           <div className={`frame-content ${hiddenVisas.includes('j1-visa-detail') ? 'hidden' : ''}`}>
             <iframe
@@ -71,12 +71,12 @@ const Visa = () => {
 
         <div className="subsection-block">
           <h3 id="m1-visa" onClick={() => toggleVisaDetails('m1-visa-detail')}>
-            F1 Visa
+            M1 Visa
           </h3>
           <div className={`frame-content ${hiddenVisas.includes('m1-visa-detail') ? 'hidden' : ''}`}>
             <iframe
               title="The M-1 Visa, Explained"
-              src="https://www.youtube.com/embed/O123fOFs6rc?si=b7TfbF7dIDJTWyOy"
+              src="https://www.youtube.com/embed/G7SQ106AkDo?si=Rnqiwf2_O8LabEyp"
               allowFullScreen
             ></iframe>
           </div>

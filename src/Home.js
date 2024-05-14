@@ -5,6 +5,7 @@ function HomePage(props) {
     <main>
       <h2 className="text-center">Welcome!</h2>
       <div>
+        <img src={'./Husky.jpg'} alt="Website Logo" />
         <p>Find the right job position for you!</p>
         <a href="listings.html" className="button">Start your journey!</a>
       </div>

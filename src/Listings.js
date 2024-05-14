@@ -33,6 +33,9 @@ const Listings = () => {
 
   return (
     <main>
+      <div>
+        <img src={'./WechatIMG623.jpg'} alt="Searching Photo" />
+      </div>
       <section>
         <form onSubmit={handleSubmit} id="search-form">
           <div>
