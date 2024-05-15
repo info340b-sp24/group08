@@ -1,5 +1,87 @@
-/* Global Styles */
-/* General format & Job listing page */
+/* Discussion */
+.comment img {
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+} 
+
+.comment p {
+  margin: 0;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.comment {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 1.5em;
+  margin-top: 4em;
+}
+
+#commentText {
+  width: 100%;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  resize:none;
+}
+
+.commentContent {
+  width: auto;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5%;
+  width: 100%;
+}
+
+.like-button, .save-button, .reply-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.like-button, .save-button {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+.button {
+  padding: 5px 10px;
+  background-color: #7106c9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right:10px;
+}
+
+.reply-popup {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.reply-buttons {
+  display:flexbox;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.reply-popup textarea {
+  width: 100%;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  resize:none;
+}
+
+/* Main */
 * {
   margin: 0;
   padding: 0;
@@ -75,97 +157,9 @@ footer {
 }
 
 /* Discusson Board */
-.text-center {
-  text-align: center;
-}
-
-.comment {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.comment img {
-  margin-right: 10px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.commentContent {
-  width: 100%;
-}
-
-#commentText {
-  width: 100%;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-
-
-.like-button, .save-button, .reply-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.like-button, .save-button {
-  margin-right: 10px;
-  font-size: 16px;
-  color: #666;
-}
-
-.like-button:hover, .save-button:hover {
-  color: #7106c9;
-}
-
-.reply-popup {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.reply-buttons {
-  margin-top: 10px;
-  text-align: right;
-}
-
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-}
-
-.subsection {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.subsection-block {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  padding: 0 10px 0 10px;
-}
-
-.frame-content {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
-}
-
-.frame-content iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 
 .text-center {
@@ -205,14 +199,7 @@ p {
   margin-bottom: 0;
 }
 
-.button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #7106c9;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
+
 
 .job-search-img {
   width: 100%;
@@ -285,3 +272,15 @@ nav ul li a {
   }
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: -15px;
+}
+
+.col-md-4 {
+  flex-basis: 0;
+  flex-grow: 1;
+  padding: 0 10px 0 10px;
+}
