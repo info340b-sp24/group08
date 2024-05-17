@@ -7,7 +7,7 @@ function HomePage(props) {
       <div>
         <img src={'./Husky.jpg'} alt="Website Logo" />
         <p>Find the right job position for you!</p>
-        <a href="listings.html" className="button">Start your journey!</a>
+        <a href="/listings" className="button">Start your journey!</a>
       </div>
 
       <h3>Introduction</h3>

@@ -7,7 +7,7 @@ import { FaPlus } from 'react-icons/fa';
 
 function DiscussionPage(props) {
   const [newCommentText, setNewCommentText] = useState("");
-  const [replyText, setReplyText] = useState("");
+  const [replyTexts, setReplyTexts] = useState({});
   const [discussionComments, setDiscussionComments] = useState([
     {
       id: "Hello",
@@ -52,17 +52,17 @@ function DiscussionPage(props) {
   };
 
   const handleReply = (index) => {
-    if (replyText.trim() !== "") {
+    if (replyTexts[index]?.trim() !== "") {
       const updatedComments = [...discussionComments];
       updatedComments[index].replies.push({
         id: Math.random().toString(36).substr(2, 9),
         username: "New User",
-        commentText: replyText,
+        commentText: replyTexts[index],
         imageUrl: iconImg,
         liked: false
       });
       setDiscussionComments(updatedComments);
-      setReplyText("");
+      setReplyTexts({ ...replyTexts, [index]: "" });
     }
   };
 
@@ -80,12 +80,12 @@ function DiscussionPage(props) {
     setNewCommentText(e.target.value);
   };
 
-  const handleReplyChange = (e) => {
-    setReplyText(e.target.value);
+  const handleReplyChange = (e, index) => {
+    setReplyTexts({ ...replyTexts, [index]: e.target.value });
   };
 
-  const handleCancelReply = () => {
-    setReplyText("");
+  const handleCancelReply = (index) => {
+    setReplyTexts({ ...replyTexts, [index]: "" });
   };
 
   const handleCancelComment = () => {
@@ -96,7 +96,7 @@ function DiscussionPage(props) {
     <main>
       <div>
         <h2 className="text-center">Discussion Board</h2>
-        
+
         <div id="submitComment">
           <div className="reply-popup">
             <textarea
@@ -140,14 +140,14 @@ function DiscussionPage(props) {
                   <textarea
                     id={`commentText-${commentIndex}`}
                     placeholder="Write your reply here..."
-                    value={replyText}
-                    onChange={handleReplyChange}
+                    value={replyTexts[commentIndex] || ""}
+                    onChange={(e) => handleReplyChange(e, commentIndex)}
                   ></textarea>
                   <div className="reply-buttons">
                     <button className="button" onClick={() => handleReply(commentIndex)}>
                       Reply
                     </button>
-                    <button className="button" onClick={handleCancelReply}>
+                    <button className="button" onClick={() => handleCancelReply(commentIndex)}>
                       Cancel
                     </button>
                   </div>
@@ -184,5 +184,3 @@ function DiscussionPage(props) {
 }
 
 export default DiscussionPage;
-
-

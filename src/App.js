@@ -11,8 +11,8 @@ import './index.css';
 export class App extends React.Component {
   render() {
     return (<React.StrictMode>
-        <Header/>
-        <div className='container-fluid d-flex flex-column'>
+      <Header/>
+        <div className='content'>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage/>}/>
@@ -21,9 +21,9 @@ export class App extends React.Component {
               <Route path="/discussion" element={<Discussion/>}/>
             </Routes>
           </BrowserRouter>
-          <Footer/>
         </div>
-      </React.StrictMode>);
+        <Footer/>
+    </React.StrictMode>);
   }
 }
 
