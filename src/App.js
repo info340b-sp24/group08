@@ -10,6 +10,7 @@ import Listings from './Listings';
 import Visa from './Visa';
 import Discussion from './Discussion';
 import HomePage from './Home';
+import ErrorPage from './ErrorPage';
 import './index.css';
 
 export class App extends React.Component {
@@ -33,6 +34,7 @@ export class App extends React.Component {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/logout" element={<Logout />} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
           </BrowserRouter>
         </div>

@@ -1,314 +1,337 @@
 /* Discussion */
+#root {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
 .comment img {
-  margin-right: 10px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-} 
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.login-container {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.my-btn {
+    padding: 10px;
+}
+
+.listing-img {
+    width: 100%;
+}
 
 .comment p {
-  margin: 0;
+    margin: 0;
 }
 
 .username {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .comment {
-  display: flex;
-  margin-bottom: 20px;
-  margin-left: 1.5em;
-  margin-top: 4em;
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 1.5em;
+    margin-top: 4em;
 }
 
 #commentText {
-  width: 100%;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 10px;
-  resize:none;
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    resize: none;
 }
 
 .commentContent {
-  width: auto;
-  border: 1px solid black;
-  padding: 20px;
-  border-radius: 5%;
-  width: 100%;
+    width: auto;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5%;
+    width: 100%;
 }
 
 .like-button, .save-button, .reply-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
 
 .like-button, .save-button {
-  margin-right: 10px;
-  font-size: 16px;
-  color: #666;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #666;
 }
 
 .button {
-  padding: 5px 10px;
-  background-color: #7106c9;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right:10px;
+    padding: 5px 10px;
+    background-color: #7106c9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .reply-popup {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .reply-buttons {
-  display:flexbox;
-  margin-top: 10px;
-  text-align: right;
+    display: flexbox;
+    margin-top: 10px;
+    text-align: right;
 }
 
 .reply-popup textarea {
-  width: 100%;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 10px;
-  resize:none;
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    resize: none;
 }
 
 /* Main */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 main {
-  padding: 20px;
+    padding: 20px;
 }
 
 section {
-  margin-bottom: 20px;
-  background-color: #fff;
-  padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
 }
 
 section form div {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 section form div label {
-  display: block;
-  margin-bottom: 5px;
+    display: block;
+    margin-bottom: 5px;
 }
 
 section form div input[type="text"] {
-  width: calc(25% - 10px);
-  padding: 5px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: calc(25% - 10px);
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 section form button[type="submit"] {
-  padding: 5px 10px;
-  background-color: #7106c9;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 5px 10px;
+    background-color: #7106c9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 section form button[type="submit"]:hover {
-  background-color: #5a0483;
+    background-color: #5a0483;
 }
 
 main > div {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 main h2 {
-  color: #7106c9;
+    color: #7106c9;
 }
 
 main h3 {
-  margin-top: 10px;
-  color: #333;
+    margin-top: 10px;
+    color: #333;
 }
 
 main h4 {
-  color: #666;
+    color: #666;
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .content {
-  flex: 1;
+    flex: 1;
 }
+
 .frame-content {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
-  width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    width: 100%;
 }
 
 .frame-content iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
+
 footer {
-  background-color: #7106c9;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  height: 20vh;
-}
-
-/* Discusson Board */
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.subsection-block > div {
-  margin-top: 1rem;
-}
-
-.lead {
-  font-size: 1.25rem;
-  font-weight: 300;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
-  color: #333;
-  line-height: 1.6;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
-
-p {
-  margin-bottom: 1.5rem;
-}
-
-.username {
-  margin-bottom: 0;
-}
-
-
-
-.job-search-img {
-  width: 100%;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-@media (max-width: 500px) {
-  header, nav ul {
-    background-color: #7106c9;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav ul li {
-    display: flex;
-    margin-right: 15%;
-    margin-left: 15%;
-    width: 70%;
-  }
-}
-
-@media (min-width: 500px) {
-  header, nav ul {
-    background-color: #7106c9;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav ul li {
-    display: inline;
-    margin-right: 10px;
-  }
-}
-
-@media (min-width: 992px) {
-  header, nav ul {
     background-color: #7106c9;
     color: #fff;
     padding: 20px;
     text-align: center;
-  }
+    height: 20vh;
+}
 
-  nav ul {
-    list-style-type: none;
+/* Discusson Board */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.subsection-block > div {
+    margin-top: 1rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+header h1 {
     margin: 0;
-    padding: 0;
-  }
+    font-size: 2rem;
+}
 
-  nav ul li {
-    display: inline;
-    margin-right: 20px;
-  }
+h1 {
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+.username {
+    margin-bottom: 0;
+}
+
+
+.job-search-img {
+    width: 100%;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 15px;
-  margin-left: -15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 15px;
+    margin-left: -15px;
 }
 
 .col-md-4 {
-  flex-basis: 0;
-  flex-grow: 1;
-  padding: 0 10px 0 10px;
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 0 10px 0 10px;
+}
+
+
+@media (max-width: 500px) {
+    header, nav ul {
+        background-color: #7106c9;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: flex;
+        margin-right: 15%;
+        margin-left: 15%;
+        width: 70%;
+    }
+}
+
+@media (min-width: 500px) {
+    header, nav ul {
+        background-color: #7106c9;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    header, nav ul {
+        background-color: #7106c9;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
 }
