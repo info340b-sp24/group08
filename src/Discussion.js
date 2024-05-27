@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import iconImg from './img/icon.jpg';
 import huskyImg from './img/Husky.jpg';
 import snowImg from './img/snow.jpg';
-import { FaHeart } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa';
+import { FaHeart, FaPlus } from 'react-icons/fa';
 
 function DiscussionPage(props) {
   const [newCommentText, setNewCommentText] = useState("");
@@ -92,6 +91,67 @@ function DiscussionPage(props) {
     setNewCommentText("");
   };
 
+  const commentElements = discussionComments.map((comment, commentIndex) => (
+    <div key={commentIndex} className="comment">
+      <div className="me-2">
+        <img src={comment.imageUrl} alt="User Icon" />
+      </div>
+      <div className="commentContent">
+        <p className="username">{comment.username}</p>
+        <p>{comment.commentText}</p>
+        <button className="like-button" onClick={() => handleLike(commentIndex)}>
+          <span style={{ color: comment.liked ? "red" : "grey" }}>
+            <FaHeart />
+          </span>
+        </button>
+        <button className="save-button">
+          <span style={{ color: "grey" }}>
+            <FaPlus />
+          </span>
+        </button>
+
+        <div className="reply-popup">
+          <textarea
+            id={`commentText-${commentIndex}`}
+            placeholder="Write your reply here..."
+            value={replyTexts[commentIndex] || ""}
+            onChange={(e) => handleReplyChange(e, commentIndex)}
+          ></textarea>
+          <div className="reply-buttons">
+            <button className="button" onClick={() => handleReply(commentIndex)}>
+              Reply
+            </button>
+            <button className="button" onClick={() => handleCancelReply(commentIndex)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        {comment.replies.map((reply, replyIndex) => (
+          <div key={replyIndex} className="comment reply">
+            <div className="me-2">
+              <img src={reply.imageUrl} alt="User Icon" />
+            </div>
+            <div className="commentContent">
+              <p className="username">{reply.username}</p>
+              <p>{reply.commentText}</p>
+              <button className="like-button" onClick={() => handleLike(commentIndex, replyIndex)}>
+                <span style={{ color: reply.liked ? "red" : "grey" }}>
+                  <FaHeart />
+                </span>
+              </button>
+              <button className="save-button">
+                <span style={{ color: "grey" }}>
+                  <FaPlus />
+                </span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ));
+
   return (
     <main>
       <div>
@@ -117,66 +177,7 @@ function DiscussionPage(props) {
         </div>
 
         <div id="discussion">
-          {discussionComments.map((comment, commentIndex) => (
-            <div key={commentIndex} className="comment">
-              <div className="me-2">
-                <img src={comment.imageUrl} alt="User Icon" />
-              </div>
-              <div className="commentContent">
-                <p className="username">{comment.username}</p>
-                <p>{comment.commentText}</p>
-                <button className="like-button" onClick={() => handleLike(commentIndex)}>
-                  <span style={{ color: comment.liked ? "red" : "grey" }}>
-                    <FaHeart />
-                  </span>
-                </button>
-                <button className="save-button">
-                  <span style={{ color: "grey" }}>
-                    <FaPlus />
-                  </span>
-                </button>
-
-                <div className="reply-popup">
-                  <textarea
-                    id={`commentText-${commentIndex}`}
-                    placeholder="Write your reply here..."
-                    value={replyTexts[commentIndex] || ""}
-                    onChange={(e) => handleReplyChange(e, commentIndex)}
-                  ></textarea>
-                  <div className="reply-buttons">
-                    <button className="button" onClick={() => handleReply(commentIndex)}>
-                      Reply
-                    </button>
-                    <button className="button" onClick={() => handleCancelReply(commentIndex)}>
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-
-                {comment.replies.map((reply, replyIndex) => (
-                  <div key={replyIndex} className="comment reply">
-                    <div className="me-2">
-                      <img src={reply.imageUrl} alt="User Icon" />
-                    </div>
-                    <div className="commentContent">
-                      <p className="username">{reply.username}</p>
-                      <p>{reply.commentText}</p>
-                      <button className="like-button" onClick={() => handleLike(commentIndex, replyIndex)}>
-                        <span style={{ color: reply.liked ? "red" : "grey" }}>
-                          <FaHeart />
-                        </span>
-                      </button>
-                      <button className="save-button">
-                        <span style={{ color: "grey" }}>
-                          <FaPlus />
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          {commentElements}
         </div>
       </div>
     </main>
