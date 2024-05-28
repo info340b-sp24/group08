@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Card, Carousel, Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  dataImg from './img/Data.jpg';
-import UIUX from './img/UIUX.jpg';
-import software from './img/Software.jpg';
+import UIUXImg from './img/UIUX.jpg';
+import softwareImg from './img/Software.jpg';
 
 
 const Listings = () => {
@@ -48,7 +48,7 @@ const Listings = () => {
         'Experience applying your analytics skills to projects which have had impact on business strategy',
         'Interest in unlocking new opportunities for growth by discovering insights, automating processes'
       ],
-      imageUrl: UIUX
+      imageUrl: UIUXImg
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ const Listings = () => {
         'Perform ongoing checks of internal dashboards to ensure they are up to date.',
         'Support ad hoc data, SQL query, analysis, and debugging requests from cross-functional stakeholders.'
       ],
-      imageUrl: software
+      imageUrl: softwareImg
     }
   ];
 
