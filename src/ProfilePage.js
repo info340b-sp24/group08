@@ -35,16 +35,18 @@ export default function ProfilePage(props) {
     const userImgRef = dbRef(db, "userData/"+currentUser.userId+"/imgUrl")
     firebaseSet(userImgRef, downloadUrlString);
   }
+  const logo = require('./img/icon.jpg');
+
   return (
     <div className="container">
       <h2>
         {props.currentUser.userName && displayName+"'s"} Profile
       </h2>
       <div className="mb-5 image-upload-form">
-        <img src={imageUrl} alt="user avatar preview" className="mb-2"/>
-        <label htmlFor="imageUploadInput" className="btn btn-sm btn-secondary me-2">Choose Image</label>
-        <button className="btn btn-sm btn-success" onClick={handleImageUpload}>Save to Profile</button>
-        <input type="file" name="image" id="imageUploadInput" className="d-none" onChange={handleChange}/>
+        <img src={logo} alt="user avatar preview" className="mb-2"/>
+        {/*<label htmlFor="imageUploadInput" className="btn btn-sm btn-secondary me-2">Choose Image</label>*/}
+        {/*<button className="btn btn-sm btn-success" onClick={handleImageUpload}>Save to Profile</button>*/}
+        {/*<input type="file" name="image" id="imageUploadInput" className="d-none" onChange={handleChange}/>*/}
       </div>
     </div>
   )
