@@ -1,105 +1,158 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import iconImg from './img/icon.jpg';
 import huskyImg from './img/Husky.jpg';
 import snowImg from './img/snow.jpg';
 import { FaHeart, FaPlus } from 'react-icons/fa';
+import { getDatabase, ref, onValue, set, push } from 'firebase/database';
+import { Link, Navigate, useNavigate} from 'react-router-dom';
 
 function DiscussionPage(props) {
+  const db = getDatabase(); //"the database"
+  const currentUser = props.currentUser;
+  const userObj = currentUser;
   const [newCommentText, setNewCommentText] = useState("");
   const [replyTexts, setReplyTexts] = useState({});
   const [discussionComments, setDiscussionComments] = useState([
     {
-      id: "Hello",
-      username: "Hello",
+      userId: "Hello",
+      userName: "Hello",
+      userImg: iconImg,
       commentText: "I want to become the resident of the America, do you guys know what kinds of job position will help me to achieve this goal?",
-      imageUrl: iconImg,
       liked: false,
       replies: []
     },
     {
-      id: "Dawg",
-      username: "Dawg",
+      userId: "Dawg",
+      userName: "Dawg",
+      userImg: huskyImg,
       commentText: "I am an international undergraduate computer science student, is software engineer a good position for me to stay here working?",
-      imageUrl: huskyImg,
       liked: false,
       replies: []
     },
     {
-      id: "Snow",
-      username: "Snow",
+      userId: "Snow",
+      userName: "Snow",
+      userImg: snowImg,
       commentText: "I want to be an UIUX designer in the future, what companies will support the international students for this position?",
-      imageUrl: snowImg,
       liked: false,
       replies: []
     }
   ]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const commentsRef = ref(db, "discussionComments");
+    const offFunction = onValue(commentsRef, (snapshot) => {   //when db value changes
+      const valueObj = snapshot.val();
+      const objKeys = Object.keys(valueObj); //convert object into array
+      const objArray = objKeys.map((keyString) => {
+      const theMessageObj = valueObj[keyString];
+          theMessageObj.key = keyString;
+          return theMessageObj;
+        })
+        setDiscussionComments(objArray);
+    })
+
+    function cleanup() {
+      console.log("component is being removed");
+    offFunction();     //when the component goes away, we turn off the listener
+    }
+    return cleanup; //return instructions on how to turn off lights
+  }, [])
+
+  // useEffect(() => {
+  //   const commentsRef = ref(db, 'discussionComments');
+    
+  //   onValue(commentsRef, (snapshot) => {
+  //     const data = snapshot.val();
+  //     if (data) {
+  //       const commentsArray = Object.keys(data).map(key => ({
+  //         id: key,
+  //         ...data[key]
+  //       }));
+  //       setDiscussionComments(commentsArray);
+  //     }
+  //   });
+  // }, []);
 
   const handleSubmit = () => {
+    if (!userObj || !userObj.userId) {
+      alert('Please log in to post a comment.');
+      navigate('/login');
+      return;
+    }
+
     if (newCommentText.trim() !== "") {
       const newComment = {
-        id: Math.random().toString(36).substr(2, 9),
-        username: "New User",
-        commentText: newCommentText,
-        imageUrl: iconImg,
-        liked: false,
-        replies: []
-      };
+        "userId": userObj.userId,
+        "userName": userObj.userName,
+        "userImg": userObj.userImg,
+        "commentText": newCommentText,
+        "liked": false,
+        "replies": []
+      }
 
-      setDiscussionComments([...discussionComments, newComment]);
+      const commentsRef = ref(db, 'discussionComments');
+      push(commentsRef, newComment);
       setNewCommentText("");
     }
   };
 
-  const handleReply = (index) => {
-    if (replyTexts[index]?.trim() !== "") {
-      const updatedComments = [...discussionComments];
-      updatedComments[index].replies.push({
-        id: Math.random().toString(36).substr(2, 9),
-        username: "New User",
-        commentText: replyTexts[index],
-        imageUrl: iconImg,
-        liked: false
-      });
-      setDiscussionComments(updatedComments);
-      setReplyTexts({ ...replyTexts, [index]: "" });
+  const handleReply = (commentId) => {
+    if (!userObj || !userObj.userId) {
+      alert('Please log in to post a comment.');
+      navigate('/login');
+    }
+
+    if (replyTexts[commentId]?.trim() !== "") {
+      const reply = {
+        "userId": userObj.userId,
+        "userName": userObj.userName,
+        "userImg": userObj.userImg,
+        "commentText": replyTexts[commentId],
+        "userImg": iconImg,
+        "liked": false
+      };
+
+      const repliesRef = ref(db, `discussionComments/${commentId}/replies`);
+      push(repliesRef, reply);
+      setReplyTexts({ ...replyTexts, [commentId]: "" });
     }
   };
 
-  const handleLike = (commentIndex, replyIndex) => {
-    const updatedComments = [...discussionComments];
-    if (replyIndex === undefined) {
-      updatedComments[commentIndex].liked = !updatedComments[commentIndex].liked;
-    } else {
-      updatedComments[commentIndex].replies[replyIndex].liked = !updatedComments[commentIndex].replies[replyIndex].liked;
-    }
-    setDiscussionComments(updatedComments);
+  const handleLike = (commentId, replyId) => {
+    const commentRef = replyId === undefined 
+      ? ref(db, `discussionComments/${commentId}/liked`)
+      : ref(db, `discussionComments/${commentId}/replies/${replyId}/liked`);
+
+      set(commentRef, !discussionComments.find(comment => comment.id === commentId).liked);
   };
 
   const handleCommentChange = (e) => {
     setNewCommentText(e.target.value);
   };
 
-  const handleReplyChange = (e, index) => {
-    setReplyTexts({ ...replyTexts, [index]: e.target.value });
+  const handleReplyChange = (e, commentId) => {
+    setReplyTexts({ ...replyTexts, [commentId]: e.target.value });
   };
 
-  const handleCancelReply = (index) => {
-    setReplyTexts({ ...replyTexts, [index]: "" });
+  const handleCancelReply = (commentId) => {
+    setReplyTexts({ ...replyTexts, [commentId]: "" });
   };
 
   const handleCancelComment = () => {
     setNewCommentText("");
   };
 
-  const commentElements = discussionComments.map((comment, commentIndex) => (
-    <div key={commentIndex} className="comment">
+  const commentElements = discussionComments.map((comment) => (
+    <div key={comment.id} className="comment">
       <div className="me-2">
-        <img src={comment.imageUrl} alt="User Icon" />
+        <img src={comment.userImg} alt="User Icon" />
       </div>
       <div className="commentContent">
         <p className="username">{comment.username}</p>
         <p>{comment.commentText}</p>
-        <button className="like-button" onClick={() => handleLike(commentIndex)}>
+        <button className="like-button" onClick={() => handleLike(comment.id)}>
           <span style={{ color: comment.liked ? "red" : "grey" }}>
             <FaHeart />
           </span>
@@ -112,31 +165,31 @@ function DiscussionPage(props) {
 
         <div className="reply-popup">
           <textarea
-            id={`commentText-${commentIndex}`}
+            id={`commentText-${comment.id}`}
             placeholder="Write your reply here..."
-            value={replyTexts[commentIndex] || ""}
-            onChange={(e) => handleReplyChange(e, commentIndex)}
+            value={replyTexts[comment.id] || ""}
+            onChange={(e) => handleReplyChange(e, comment.id)}
           ></textarea>
           <div className="reply-buttons">
-            <button className="button" onClick={() => handleReply(commentIndex)}>
+            <button className="button" onClick={() => handleReply(comment.id)}>
               Reply
             </button>
-            <button className="button" onClick={() => handleCancelReply(commentIndex)}>
+            <button className="button" onClick={() => handleCancelReply(comment.id)}>
               Cancel
             </button>
           </div>
         </div>
 
-        {comment.replies.map((reply, replyIndex) => (
-          <div key={replyIndex} className="comment reply">
+        {comment.replies && Object.keys(comment.replies).map((replyId) => (
+          <div key={replyId} className="comment reply">
             <div className="me-2">
-              <img src={reply.imageUrl} alt="User Icon" />
+              <img src={comment.replies[replyId].userImg} alt="User Icon" />
             </div>
             <div className="commentContent">
-              <p className="username">{reply.username}</p>
-              <p>{reply.commentText}</p>
-              <button className="like-button" onClick={() => handleLike(commentIndex, replyIndex)}>
-                <span style={{ color: reply.liked ? "red" : "grey" }}>
+              <p className="username">{comment.replies[replyId].username}</p>
+              <p>{comment.replies[replyId].commentText}</p>
+              <button className="like-button" onClick={() => handleLike(comment.id, replyId)}>
+                <span style={{ color: comment.replies[replyId].liked ? "red" : "grey" }}>
                   <FaHeart />
                 </span>
               </button>
