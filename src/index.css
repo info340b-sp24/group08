@@ -1,30 +1,134 @@
-/* Discussion */
-#root {
-    min-height: 100vh;
+/* Main */
+* {
     margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.content {
+    flex: 1;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+section form div {
+    margin-bottom: 10px;
+}
+
+section form div label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+section form div input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+section form button[type="submit"] {
+    padding: 5px 10px;
+    background-color: #7106c9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+section form button[type="submit"]:hover {
+    background-color: #5a0483;
+}
+
+main > div {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+main h2 {
+    color: #7106c9;
+}
+
+main h3 {
+    margin-top: 10px;
+    color: #333;
+}
+
+main h4 {
+    color: #666;
+}
+
+/* Header and Navigation */
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: block;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header, nav ul {
+    background-color: #7106c9;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Comments and Replies */
 .comment img {
     margin-right: 10px;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-}
-
-.login-container {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-.my-btn {
-    padding: 10px;
-}
-
-.listing-img {
-    width: 100%;
 }
 
 .comment p {
@@ -33,6 +137,7 @@
 
 .username {
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 .comment {
@@ -102,168 +207,19 @@
     resize: none;
 }
 
-/* Main */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding: 20px;
-}
-
-section form div {
-    margin-bottom: 10px;
-}
-
-section form div label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-section form div input[type="text"] {
-    width: calc(25% - 10px);
-    padding: 5px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-section form button[type="submit"] {
-    padding: 5px 10px;
-    background-color: #7106c9;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-section form button[type="submit"]:hover {
-    background-color: #5a0483;
-}
-
-main > div {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-main h2 {
-    color: #7106c9;
-}
-
-main h3 {
-    margin-top: 10px;
-    color: #333;
-}
-
-main h4 {
-    color: #666;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.content {
-    flex: 1;
-}
-
-.frame-content {
-    position: relative;
-    overflow: hidden;
-    padding-top: 56.25%;
+/* Job Listings */
+.listing-img {
     width: 100%;
 }
-
-.frame-content iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-footer {
-    background-color: #7106c9;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    height: 20vh;
-}
-
-/* Discusson Board */
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.subsection-block > div {
-    margin-top: 1rem;
-}
-
-.lead {
-    font-size: 1.25rem;
-    font-weight: 300;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-h1 {
-    margin-bottom: 1rem;
-}
-
-p {
-    margin-bottom: 1.5rem;
-}
-
-.username {
-    margin-bottom: 0;
-}
-
 
 .job-search-img {
     width: 100%;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: 15px;
+    margin-right: -15px;
     margin-left: -15px;
 }
 
@@ -273,65 +229,42 @@ nav ul li a {
     padding: 0 10px 0 10px;
 }
 
-
-@media (max-width: 500px) {
-    header, nav ul {
-        background-color: #7106c9;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
-
-    nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    nav ul li {
-        display: flex;
-        margin-right: 15%;
-        margin-left: 15%;
-        width: 70%;
-    }
+/* Footer */
+footer {
+    background-color: #7106c9;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 20vh;
 }
 
+/* Media Queries */
 @media (min-width: 500px) {
-    header, nav ul {
-        background-color: #7106c9;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
-
-    nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
     nav ul li {
         display: inline;
         margin-right: 10px;
     }
+
+    section form div input[type="text"] {
+        width: calc(25% - 10px);
+    }
 }
 
 @media (min-width: 992px) {
-    header, nav ul {
-        background-color: #7106c9;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-    }
-
-    nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
     nav ul li {
-        display: inline;
         margin-right: 20px;
+    }
+
+    header, nav ul {
+        padding: 20px;
+    }
+
+    section form div input[type="text"] {
+        width: calc(50% - 10px);
+    }
+
+    .comment {
+        margin-left: 2em;
+        margin-top: 2em;
     }
 }

@@ -96,35 +96,41 @@ function DiscussionPage(props) {
         <img src={iconImg} alt="User Icon" />
       </div>
       <div className="commentContent">
+
         <p className="username">{comment.userName}</p>
         <p>{comment.commentText}</p>
         <button className="like-button" onClick={() => handleLike(comment.id)}>
           <FaHeart style={{ color: comment.liked ? "red" : "grey" }} />
         </button>
-        <textarea
-          placeholder="Write your reply here..."
-          value={replyTexts[comment.id] || ""}
-          onChange={(e) => handleReplyChange(e, comment.id)}
-        />
-        <br />
-        <button className="button" onClick={() => handleReply(comment.id)}>Reply</button>
-      </div>
+          <div className="reply-popup">
+            <textarea
+              placeholder="Write your reply here..."
+              value={replyTexts[comment.id] || ""}
+              onChange={(e) => handleReplyChange(e, comment.id)}
+            />
+            <br />
+            <div className="reply-buttons">
+              <button className="button" onClick={() => handleReply(comment.id)}>Reply</button>
+            </div>
+          </div>
 
-      {comment.replies && Object.values(comment.replies).map((reply, index) => (
-        <div key={index} className="comment reply">
-          <div className="me-2">
-            <img src={iconImg} alt="User Icon" />
-          </div>
-          <div className="commentContent">
-            <p className="username">{reply.userName}</p>
-            <p>{reply.commentText}</p>
-            <button className="like-button" onClick={() => handleLike(comment.id, reply.id)}>
-              <FaHeart style={{ color: reply.liked ? "red" : "grey" }} />
-            </button>
-          </div>
+          {comment.replies && Object.values(comment.replies).map((reply, index) => (
+            <div key={index} className="comment reply">
+              <div className="me-2">
+                <img src={iconImg} alt="User Icon" />
+              </div>
+              <div className="commentContent">
+                <p className="username">{reply.userName}</p>
+                <p>{reply.commentText}</p>
+                <button className="like-button" onClick={() => handleLike(comment.id, reply.id)}>
+                  <FaHeart style={{ color: reply.liked ? "red" : "grey" }} />
+                </button>
+              </div>
+            </div>
+          ))}
+          
         </div>
-      ))}
-    </div>
+      </div>
   ));
 
   return (

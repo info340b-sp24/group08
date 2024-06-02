@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter and Routes
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Header } from './header';
 import Signin from './Signin';
@@ -24,7 +24,7 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: DEFAULT_USERS[0], // default to null user
+      currentUser: DEFAULT_USERS[0], 
     };
   }
 
@@ -34,7 +34,7 @@ export class App extends React.Component {
     signOut(auth)
       .then(() => {
         console.log("Successfully signed out");
-        this.setState({ currentUser: DEFAULT_USERS[0] }); // Change to default user
+        this.setState({ currentUser: DEFAULT_USERS[0] });
       })
       .catch((error) => {
         console.error("Error signing out:", error);
@@ -43,7 +43,7 @@ export class App extends React.Component {
 
   componentDidMount() {
     const auth = getAuth();
-    // const navigateTo = useNavigate();
+ 
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -55,20 +55,21 @@ export class App extends React.Component {
         this.setState({ currentUser: firebaseUser });
       } else {
         console.log("signed out");
-        this.setState({ currentUser: DEFAULT_USERS[0] }); //change the null user
+        this.setState({ currentUser: DEFAULT_USERS[0] });
       }
     });
   }
 
   render() {
     return (
-      <Router> {/* Wrap the component with Router */}
+      <Router>
         <>
           <Helmet>
             <meta charSet="utf-8" />
             <title>InterStu Spot</title>
             <meta name="author" content="Hanrui Tang, Rock Guan, Xinyi Zhou, Eloise Hou" />
             <meta name="description" content="The platform is designed to offer real-time updated job opportunities for international students and also employment policies from the official channel. We're here to help every international student to get their loved position without missing any chance." />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
           </Helmet>
           <Header currentUser={this.state.currentUser} />
           <div className='content'>
@@ -90,3 +91,4 @@ export class App extends React.Component {
     )
   }
 }
+
