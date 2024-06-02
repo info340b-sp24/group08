@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Card, Carousel, Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, Carousel, Form, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  dataImg from './img/Data.jpg';
+import dataImg from './img/Data.jpg';
 import UIUXImg from './img/UIUX.jpg';
 import softwareImg from './img/Software.jpg';
-
 
 const Listings = () => {
   const initialJobs = [
@@ -20,7 +19,12 @@ const Listings = () => {
         'Full-time work during the summer (40 hours/week)',
         'Effective performance management and integrated opportunities for growth'
       ],
-      imageUrl: './WechatIMG623.jpg'
+      imageUrl: './WechatIMG623.jpg',
+      hrContact: {
+        name: 'John Doe',
+        pronoun: 'He/Him',
+        email: 'john.doe@amazon.com'
+      }
     },
     {
       id: 2,
@@ -34,7 +38,12 @@ const Listings = () => {
         'Strong attention to detail and organizational skills',
         'Knowledge of business intelligence tools such as Power BI, Tableau'
       ],
-      imageUrl: dataImg
+      imageUrl: dataImg,
+      hrContact: {
+        name: 'Jane Smith',
+        pronoun: 'She/Her',
+        email: 'jane.smith@dhl.com'
+      }
     },
     {
       id: 3,
@@ -48,7 +57,12 @@ const Listings = () => {
         'Experience applying your analytics skills to projects which have had impact on business strategy',
         'Interest in unlocking new opportunities for growth by discovering insights, automating processes'
       ],
-      imageUrl: UIUXImg
+      imageUrl: UIUXImg,
+      hrContact: {
+        name: 'Sam Brown',
+        pronoun: 'They/Them',
+        email: 'sam.brown@salesforce.com'
+      }
     },
     {
       id: 4,
@@ -62,7 +76,12 @@ const Listings = () => {
         'Perform ongoing checks of internal dashboards to ensure they are up to date.',
         'Support ad hoc data, SQL query, analysis, and debugging requests from cross-functional stakeholders.'
       ],
-      imageUrl: softwareImg
+      imageUrl: softwareImg,
+      hrContact: {
+        name: 'Alex Johnson',
+        pronoun: 'He/Him',
+        email: 'alex.johnson@tesla.com'
+      }
     }
   ];
 
@@ -73,6 +92,7 @@ const Listings = () => {
     jobIndustry: '',
     jobSalary: ''
   });
+  const [selectedJob, setSelectedJob] = useState(null);
 
   const handleInputChange = (event) => {
     setSearchParams({
@@ -94,10 +114,18 @@ const Listings = () => {
     setJobs(filteredJobs);
   };
 
+  const handleCardClick = (job) => {
+    setSelectedJob(job);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedJob(null);
+  };
+
   const renderJobListings = () => {
     return jobs.map(job => (
       <Col md={6} lg={4} key={job.id} className="mb-4">
-        <Card>
+        <Card onClick={() => handleCardClick(job)} style={{ cursor: 'pointer' }}>
           <Card.Body>
             <Card.Title>{job.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{job.company}</Card.Subtitle>
@@ -191,14 +219,36 @@ const Listings = () => {
           </Button>
         </Form>
 
+        <div className="mb-4">
+          <p><strong>Tip:</strong> Click on a job card to see the HR contact information!</p>
+        </div>
+
         <Row>
           {renderJobListings()}
         </Row>
+
+        <Modal show={selectedJob !== null} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>HR Contact Information</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {selectedJob && (
+              <>
+                <p><strong>Name:</strong> {selectedJob.hrContact.name}</p>
+                <p><strong>Pronoun:</strong> {selectedJob.hrContact.pronoun}</p>
+                <p><strong>Email:</strong> {selectedJob.hrContact.email}</p>
+              </>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </main>
   );
 };
 
 export default Listings;
-
- 
