@@ -55,7 +55,7 @@ function DiscussionPage(props) {
   };
 
   const handleReply = (commentId) => {
-    if (!props.currentUser) {
+    if (!props.currentUser || !props.currentUser.userId) {
       alert('Please log in to post a reply.');
       navigate('/login');
       return;
@@ -79,16 +79,26 @@ function DiscussionPage(props) {
     setReplyTexts({ ...replyTexts, [commentId]: "" });
   };
 
-  const handleLike = (commentId, replyId = null) => {
-    if (!props.currentUser) {
+  const handleLike = (commentId, replyId) => {
+    if (!props.currentUser || !props.currentUser.userId) {
       alert('Please log in to like a comment or reply.');
       navigate('/login');
       return;
     }
+  
     const path = replyId ? `discussionComments/${commentId}/replies/${replyId}/liked` : `discussionComments/${commentId}/liked`;
     const commentRef = ref(db, path);
-    set(commentRef, !discussionComments.find(comment => comment.id === commentId).liked);
+  
+    if (replyId) {
+      const comment = discussionComments.find(comment => comment.id === commentId);
+      const reply = comment.replies.find(reply => reply.id === replyId);
+      set(commentRef, !reply.liked);
+    } else {
+      const comment = discussionComments.find(comment => comment.id === commentId);
+      set(commentRef, !comment.liked);
+    }
   };
+  
 
   const renderComments = () => discussionComments.map((comment) => (
     <div key={comment.id} className="comment">
@@ -128,7 +138,7 @@ function DiscussionPage(props) {
               </div>
             </div>
           ))}
-          
+
         </div>
       </div>
   ));
