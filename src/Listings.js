@@ -13,7 +13,8 @@ const Listings = () => {
       company: 'Amazon',
       location: 'Seattle, WA',
       industry: 'Technology',
-      salaryRange: '60,000-70,000',
+      salaryMin: 60000,
+      salaryMax: 70000,
       highlights: [
         'Part-time work during the school year (16 hours/week)',
         'Full-time work during the summer (40 hours/week)',
@@ -32,7 +33,8 @@ const Listings = () => {
       company: 'DHL Express',
       location: 'Dallas, TX',
       industry: 'Logistics',
-      salaryRange: '30,000-40,000',
+      salaryMin: 30000,
+      salaryMax: 40000,
       highlights: [
         'Strong communication skills (written and verbal)',
         'Strong attention to detail and organizational skills',
@@ -51,7 +53,8 @@ const Listings = () => {
       company: 'Salesforce',
       location: 'Seattle, WA',
       industry: 'Technology',
-      salaryRange: '70,000-80,000',
+      salaryMin: 70000,
+      salaryMax: 80000,
       highlights: [
         'Experience telling stories with data and familiarity with Tableau visualization tool',
         'Experience applying your analytics skills to projects which have had impact on business strategy',
@@ -70,7 +73,8 @@ const Listings = () => {
       company: 'Tesla',
       location: 'Fremont, CA',
       industry: 'Automotive',
-      salaryRange: '65,000-75,000',
+      salaryMin: 65000,
+      salaryMax: 75000,
       highlights: [
         'Create and/or enhance action-driven dashboards (e.g., using Tableau)',
         'Perform ongoing checks of internal dashboards to ensure they are up to date.',
@@ -104,12 +108,17 @@ const Listings = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const filteredJobs = initialJobs.filter(job => (
-      job.title.toLowerCase().includes(searchParams.jobTitle) &&
-      job.location.toLowerCase().includes(searchParams.jobLocation) &&
-      job.industry.toLowerCase().includes(searchParams.jobIndustry) &&
-      job.salaryRange.toLowerCase().includes(searchParams.jobSalary)
-    ));
+    const filteredJobs = initialJobs.filter(job => {
+      const salaryMatch = searchParams.jobSalary
+        ? (job.salaryMin <= parseInt(searchParams.jobSalary, 10) && job.salaryMax >= parseInt(searchParams.jobSalary, 10))
+        : true;
+      return (
+        job.title.toLowerCase().includes(searchParams.jobTitle) &&
+        job.location.toLowerCase().includes(searchParams.jobLocation) &&
+        job.industry.toLowerCase().includes(searchParams.jobIndustry) &&
+        salaryMatch
+      );
+    });
 
     setJobs(filteredJobs);
   };
@@ -132,7 +141,7 @@ const Listings = () => {
             <Card.Text>
               <strong>Location:</strong> {job.location}<br/>
               <strong>Industry:</strong> {job.industry}<br/>
-              <strong>Salary Range:</strong> {job.salaryRange}
+              <strong>Salary Range:</strong> ${job.salaryMin.toLocaleString()} - ${job.salaryMax.toLocaleString()}
             </Card.Text>
             <Card.Text>
               <strong>Role Highlights:</strong>
@@ -203,13 +212,13 @@ const Listings = () => {
             </Col>
             <Col>
               <Form.Group controlId="salaryInput">
-                <Form.Label>Search by Salary Range:</Form.Label>
+                <Form.Label>Search by Salary:</Form.Label>
                 <Form.Control
                   type="text"
                   name="jobSalary"
                   onChange={handleInputChange}
                   value={searchParams.jobSalary}
-                  placeholder="Enter salary range"
+                  placeholder="Enter salary"
                 />
               </Form.Group>
             </Col>
