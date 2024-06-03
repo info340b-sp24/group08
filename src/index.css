@@ -314,6 +314,18 @@ nav ul li a {
         display: inline;
         margin-right: 10px;
     }
+
+        body {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
 }
 
 @media (min-width: 992px) {
@@ -333,5 +345,17 @@ nav ul li a {
     nav ul li {
         display: inline;
         margin-right: 20px;
+    }
+
+    body {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
     }
 }
