@@ -273,6 +273,36 @@ nav ul li a {
     padding: 0 10px 0 10px;
 }
 
+/* LoadingSpinner */
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 8px;
+    padding: 40px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.spinner {
+    font-size: 48px; 
+    margin-right: 20px; 
+    animation: spin 1s linear infinite; 
+}
+
+.loading-text {
+    font-size: 24px; 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 @media (max-width: 500px) {
     header, nav ul {
