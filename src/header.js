@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-	
 import { getAuth, signOut } from 'firebase/auth';
 
 export class Header extends React.Component {
@@ -12,31 +11,31 @@ export class Header extends React.Component {
   render() {
     const currentUser = this.props.currentUser;
 
-    return (<header>
+    return (
+      <header>
         <h1>InterStu Spot</h1>
         <nav aria-label="Main navigation">
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/listings">Job Listings</a></li>
-            <li><a href="/discussion">Discussion Board</a></li>
-            <li><a href="/visa">Visa Information</a></li>
-            {/* <li><a href="/login">Login</a></li>
-            <li><a href="/signUp">Sign up</a></li> */}
-            {currentUser.userId && 
+            <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+            <li><NavLink to="/listings" activeClassName="active">Job Listings</NavLink></li>
+            <li><NavLink to="/discussion" activeClassName="active">Discussion Board</NavLink></li>
+            <li><NavLink to="/visa" activeClassName="active">Visa Information</NavLink></li>
+            {currentUser.userId &&
               <>
-                <li><a href="/ProfilePage">Profile Page</a></li>
+                <li><NavLink to="/profilepage" activeClassName="active">Profile Page</NavLink></li>
                 <li>
                   <button className="btn btn-secondary ms-2" onClick={this.handleSignOut}>Sign Out</button>
                 </li>
               </>
-            } 
+            }
             {!currentUser.userId &&
               <li>
-                  <a href="/login">Login</a>
+                <NavLink to="/login" activeClassName="active">Login</NavLink>
               </li>
             }
           </ul>
         </nav>
-      </header>);
+      </header>
+    );
   }
 }

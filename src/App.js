@@ -9,6 +9,7 @@ import Footer from './footer';
 import Listings from './Listings';
 import Visa from './Visa';
 import Discussion from './Discussion';
+import DiscussionDetail from './DiscussionDetail';
 import HomePage from './Home';
 import ErrorPage from './ErrorPage';
 import ProfilePage from './ProfilePage';
@@ -78,6 +79,7 @@ export class App extends React.Component {
               <Route path="/listings" element={<Listings />} />
               <Route path="/visa" element={<Visa />} />
               <Route path="/discussion" element={<Discussion currentUser={this.state.currentUser} />} />
+              <Route path="/discussion/:id" element={<DiscussionDetail currentUser={this.state.currentUser} />} />
               <Route path="/login" element={<Signin loginUser={this.loginUser} />} />
               {/* <Route path="/signup" element={<SignUp />} /> */}
               <Route path="/logout" element={<Logout logoutUser={this.handleSignOut} />} />

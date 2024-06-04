@@ -157,19 +157,23 @@ const Listings = () => {
     ));
   };
 
+  const renderCarouselItems = () => {
+    return initialJobs.map(job => (
+      <Carousel.Item key={job.id}>
+        <img
+          className="d-block w-100"
+          src={job.imageUrl}
+          alt={`Slide of ${job.title}`}
+        />
+      </Carousel.Item>
+    ));
+  };
+
   return (
     <main>
       <Container>
         <Carousel className="mb-4">
-          {initialJobs.map(job => (
-            <Carousel.Item key={job.id}>
-              <img
-                className="d-block w-100"
-                src={job.imageUrl}
-                alt={`Slide of ${job.title}`}
-              />
-            </Carousel.Item>
-          ))}
+          {renderCarouselItems()}
         </Carousel>
 
         <Form onSubmit={handleSubmit} id="search-form">

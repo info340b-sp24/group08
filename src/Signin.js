@@ -1,8 +1,3 @@
-// import React, {useState} from 'react';
-// import {signInWithEmailAndPassword} from 'firebase/auth';
-// import {Link, Navigate, useNavigate} from 'react-router-dom';
-// import {auth} from './firebaseConfig';
-
 import React from 'react';
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
